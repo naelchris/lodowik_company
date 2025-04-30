@@ -1,6 +1,7 @@
 import './App.css';
 import { Contact } from './contact/contact';
 import { Header } from './headerFooter/header';
+import { HeaderV2 } from './headerFooter/header_v2'
 import { Footer } from './headerFooter/footer';
 import { RestrictedPage } from './restrictedPage/restricted';
 import { PricingPlan } from './pricingPlan/pricingPlan';
@@ -27,7 +28,7 @@ function App() {
   return (
     <BrowserRouter>
     <SmoothScroll />
-      <Header />
+      <HeaderV2 />
       <Routes>
         <Route path='/contact' element={<Contact/>}></Route>
         <Route path='/restricted-page' element={<RestrictedPage/>}></Route>

@@ -1,0 +1,152 @@
+/* --- Base Header Styles --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem; /* Adjust padding as needed */
+    background-color: #ffffff; /* Or your header background */
+    position: relative; /* Needed for absolute positioning of mobile menu */
+    border-bottom: 1px solid #e0e0e0; /* Optional: adds a separator line */
+  }
+  
+  /* Logo and Text */
+  .header-logo-text a {
+    text-decoration: none;
+    color: inherit; /* Inherit text color */
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-logo img {
+    height: 40px; /* Adjust logo size */
+    margin-right: 10px;
+  }
+  
+  .header-text p {
+    margin: 0;
+    font-size: 1.5rem; /* Adjust font size */
+    font-weight: bold;
+    color: #292F36; /* Example text color */
+  }
+  
+  /* --- Desktop Navigation Styles (Default) --- */
+  .header-pages ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-pages li {
+    margin-left: 2rem; /* Adjust spacing between links */
+  }
+  
+  .header-pages a {
+    text-decoration: none;
+    color: #4D5053; /* Example link color */
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .header-pages a:hover,
+  .header-pages a:focus { /* Add focus state for accessibility */
+    color: #CDA274; /* Example hover/focus color */
+  }
+  
+  /* Hide mobile toggle button on larger screens */
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Ensure button is above the menu */
+  }
+  
+  .mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #292F36; /* Color of the hamburger lines */
+    margin-bottom: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .mobile-menu-toggle span:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* --- Mobile Styles --- */
+  @media (max-width: 768px) { /* Adjust breakpoint as needed */
+  
+    /* Hide desktop navigation */
+    .header-pages {
+      display: none; /* Hide by default on mobile */
+      position: absolute;
+      top: 100%; /* Position below the header */
+      left: 0;
+      width: 100%;
+      background-color: #ffffff; /* Background for the dropdown */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      z-index: 1000;
+    }
+  
+    /* Show the nav when the 'open' class is added */
+    .header-pages.open {
+      display: block;
+    }
+  
+    /* Style mobile menu list */
+    .header-pages ul {
+      flex-direction: column; /* Stack links vertically */
+      align-items: center; /* Center links */
+      width: 100%;
+    }
+  
+    .header-pages li {
+      margin: 0;
+      width: 100%;
+      text-align: center;
+    }
+  
+    .header-pages a {
+      display: block; /* Make links take full width */
+      padding: 1rem 0; /* Add padding for easier tapping */
+      width: 100%;
+      border-bottom: 1px solid #f0f0f0; /* Separator lines */
+    }
+     .header-pages li:last-child a {
+       border-bottom: none;
+     }
+  
+    /* Show the mobile toggle button */
+    .mobile-menu-toggle {
+      display: block;
+      margin: auto;
+    }
+  
+    /* Optional: Animate hamburger to 'X' when open */
+    .mobile-menu-toggle.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .mobile-menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-menu-toggle.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+  
+  /* --- Optional Focus Outline for Accessibility --- */
+  /* Add a visible focus style for keyboard navigation */
+  a:focus, button:focus {
+    outline: 2px solid #CDA274; /* Example focus color */
+    outline-offset: 2px;
+  }
+  /* For the mobile toggle specifically if needed */
+  .mobile-menu-toggle:focus {
+     outline: 2px solid #CDA274;
+     outline-offset: 2px;
+  }
