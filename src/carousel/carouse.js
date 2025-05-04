@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { Carousel } from "@material-tailwind/react";
+import { Typography, Button } from "@material-tailwind/react";
+
 import { BsArrowRight, BsTelephone } from "react-icons/bs";
 
 import Slider1 from "../images/slider/SLIDE 1.jpg";
@@ -54,6 +56,20 @@ export function CarouselHome() {
                     alt="Another interior design"
                     className="h-full w-full object-cover rounded-xl"
                 />
+               <div className="absolute inset-0 grid h-full w-full items-center bg-black/75">
+                    <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+                        <Typography
+                        variant="h1"
+                        color="white"
+                        className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+                        >
+                        Bangun Rumah
+                        </Typography>
+                        <Button size="lg" color="white">
+                                Explore
+                        </Button>
+                    </div>
+                 </div>
             </div>
             <div className=" h-full w-full">
                 <img
