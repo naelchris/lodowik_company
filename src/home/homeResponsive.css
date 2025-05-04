@@ -3,6 +3,9 @@
         width: 80%; 
     }
     /* HOME NEWS */
+    .homeNews{
+        margin-top: 0px;
+    }
     .homeNews>h1 {
         width: 50%;
     }

@@ -56,11 +56,11 @@ export function Home() {
       {/* flex-col by default (stacks vertically), md:flex-row (side-by-side on medium screens and up) */}
       {/* items-center (vertically centers in column), md:items-start (aligns to top in row) */}
       {/* gap-8 adds space between the two items, p-4 md:p-8 adds padding around this section */}
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 p-4 md:p-8">
+      <div className="w-screen flex flex-col md:flex-row items-center md:items-start gap-8 p-4 md:p-8">
 
         {/* Home News Section */}
         {/* w-full (full width on small), md:w-1/2 (half width on medium), lg:w-1/3 (one-third on large) */}
-        <div className="w-full md:w-1/2 lg:w-1/2">
+        <div className="w-screen md:w-1/2 lg:w-1/2">
           {/* Added Tailwind padding and text alignment for better appearance */}
           {/* Consider replacing custom 'homeNews' class with Tailwind styling */}
           <div className="homeNews p-4 md:p-0 text-center md:text-left">
@@ -81,7 +81,7 @@ export function Home() {
           </div>
         </div>
         
-        <div className="w-full md:w-1/2 lg:w-2/3 max-w-screen-lg mx-auto">
+        <div className="w-screen md:w-1/2 lg:w-2/3 max-w-screen-lg mx-auto">
           <CarouselHome />
         </div>
       </div>
@@ -89,7 +89,7 @@ export function Home() {
       {/* Rest of your Home component code */}
       <div className="homeOther">
         <div className="homePlans">
-          {services.services
+          {/* {services.services
             .filter((services, index) => index < 3)
             .map((s, ind) => {
               return (
@@ -106,15 +106,16 @@ export function Home() {
                   </Link>
                 </div>
               );
-            })}
+            })} */}
         </div>
         <div className="homeAboutUs">
             <div className="hp-subtext">
-              <h1>We Create The Art Of Stylish Living Stylishly</h1>
+              <h1>About PT. Holan Bagun Cipta</h1>
               <p>
-                It is a long established fact that a reader will be distracted
-                by the of readable content of a page when lookings at its
-                layouts the points of using that it has a more-or-less normal.
+              PT. Holan Bangun Cipta merupakan perusahaan yang bergerak di bidang konstruksi baik jasa konstruksi maupun pengadaan material yang meliputi pembangunan maupun renovasi : Gedung, Perumahan, Ruko, Real Estate, dll.
+Kami memiliki banyak pengalaman dalam Pembangunan Gedung, Rumah, dan Ruko baik bersama Developer ataupun Perorangan.
+Pengalaman kami mewujudkan impian banyak orang dalam proyek-proyek terdahulu bersama klien kami menjadi modal kami untuk terus membangun dan mengembangkan bisnis kami dengan mengedepankan kualitas dan dengan harga yang kompetitif.
+Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta bertekad berperan aktif di dalam melaksanakannya, dengan berlandaskan kepercayaan akan kemampuan diri secara profesional dan bertanggung jawab.
               </p>
               <div className="callUs">
           <div className="phoneNum">

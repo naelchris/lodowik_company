@@ -25,11 +25,8 @@ export function HeaderV2() {
     <div className="header">
       <div className="header-logo-text">
         <Link style={{ display: 'flex', alignItems: 'center' }} to="/" onClick={closeMobileMenu}> {/* Added alignment & close */}
-          <div className="header-logo">
-            <img src={logo} alt="Interno Logo" /> {/* Improved alt text */}
-          </div>
           <div className="header-text">
-            <p>Interno</p>
+            <p>PT. Holan</p>
           </div>
         </Link>
       </div>
@@ -55,7 +52,7 @@ export function HeaderV2() {
         <ul>
           {/* Add onClick={closeMobileMenu} to each link */}
           <li><Link to={`/`} onClick={closeMobileMenu}>Home</Link></li>
-          <li><Link to={`/team`} onClick={closeMobileMenu}>Team</Link></li>
+          {/* <li><Link to={`/team`} onClick={closeMobileMenu}>Team</Link></li> */}
           <li><Link to={`/services`} onClick={closeMobileMenu}>Services</Link></li>
           <li><Link to={`/projects`} onClick={closeMobileMenu}>Projects</Link></li>
           <li><Link to={`/blog`} onClick={closeMobileMenu}>Blog</Link></li>
