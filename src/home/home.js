@@ -30,6 +30,8 @@ import Slider3 from "../images/slider/SLIDE 3.jpg";
 import Slider4 from "../images/slider/SLIDE 4.jpg";
 import Slider5 from "../images/slider/SLIDE 5.jpg";
 
+import { CarouselHome } from '../carousel/carouse';
+
 
 import { Carousel, Typography, Button, slider } from "@material-tailwind/react";
 
@@ -78,74 +80,9 @@ export function Home() {
             </Link>
           </div>
         </div>
-
-        {/* Carousel Section */}
-        {/* w-full (full width on small), md:w-1/2 (half width on medium), lg:w-2/3 (two-thirds on large) */}
-        {/* max-w-screen-lg and mx-auto center the carousel within its allocated space */}
+        
         <div className="w-full md:w-1/2 lg:w-2/3 max-w-screen-lg mx-auto">
-          {/* Apply rounded corners and shadow to the Carousel component itself */}
-          {/* Set a specific height for the carousel slides for consistency across devices */}
-          <Carousel className="rounded-xl shadow-lg h-96 md:h-[500px]"> {/* Added height here */}
-            {/* Individual Carousel Slides */}
-            {/* Removed redundant wrapper div inside Carousel */}
-            <div className="h-full w-full"> {/* Use h-full w-full to fill parent Carousel height */}
-              <img
-                src={Slider1}
-                alt="Stylish living room" // Improved alt text
-                className="h-full w-full object-cover rounded-xl" // Added rounded corners to the image
-              />
-            </div>
-            {/* Slide with Overlay Content */}
-            <div className=" h-full w-full"> {/* Use h-full w-full to fill parent Carousel height */}
-              <img
-                src={Slider2}
-                alt="Modern kitchen design" // Improved alt text
-                className="h-full w-full object-cover rounded-xl" // Added rounded corners to the image
-              />
-              {/* Overlay content - centered using grid and place-items-center */}
-              {/* Added padding and text styles for the overlay content */}
-              <div className="absolute inset-0 grid place-items-center bg-black/75 rounded-xl p-4">
-                {/* Content inside the overlay - centered text and adjusted styles */}
-                <div className="text-white text-center max-w-md"> {/* Limit width of text block in overlay */}
-                  <h1 className="text-2xl md:text-3xl font-bold mb-2">Let Your Home Be Unique</h1>
-                  <p className="text-sm md:text-base opacity-80 mb-4">
-                    There are many variations of the passages of lorem Ipsum
-                    fromavailable,variations of the passages.
-                  </p>
-                  <Link to="">
-                    {/* Styled button for the overlay content */}
-                    <button className="bg-white text-blue-500 hover:bg-gray-200 font-bold py-2 px-6 rounded-lg inline-flex items-center transition duration-300 ease-in-out shadow-md hover:shadow-lg">
-                      Get Started
-                      {/* Kept original arrow color as it contrasts well with white button */}
-                      <BsArrowRight style={{ marginLeft: "8px", color: "#CDA274" }} />
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-            {/* Added other slides from your original code */}
-            <div className=" h-full w-full">
-              <img
-                src={Slider3}
-                alt="Another interior design"
-                className="h-full w-full object-cover rounded-xl"
-              />
-            </div>
-            <div className=" h-full w-full">
-              <img
-                src={Slider4}
-                alt="Living space"
-                className="h-full w-full object-cover rounded-xl"
-              />
-            </div>
-            <div className=" h-full w-full">
-              <img
-                src={Slider5}
-                alt="Bedroom design"
-                className="h-full w-full object-cover rounded-xl"
-              />
-            </div>
-          </Carousel>
+          <CarouselHome />
         </div>
       </div>
 
