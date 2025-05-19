@@ -1,0 +1,49 @@
+.whatsapp-float {
+  position: fixed;
+    /* position: relative; /* Not needed as fixed element acts as positioning context for absolute children */
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  left: 40px;
+  background-color: #25d366; /* WhatsApp green */
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px; /* Adjust icon size */
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  z-index: 1000; /* Ensure it's above other content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.whatsapp-tooltip {
+    position: absolute;
+    left: 100%; /* Position to the right of the button */
+    top: 50%;    /* Align to the vertical middle of the button */
+    transform: translateY(-50%) translateX(10px); /* Center vertically and add initial spacing */
+    background-color: white;
+    color: #128C7E; /* Darker WhatsApp green for text, or use #075E54 */
+    padding: 6px 12px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    white-space: nowrap; /* Prevent text from wrapping */
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    z-index: 1001; /* Ensure tooltip is above other elements if necessary */
+  }
+  
+  .whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(15px); /* Move slightly further out on hover */
+  }

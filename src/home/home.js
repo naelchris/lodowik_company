@@ -10,9 +10,9 @@ import services from "../servicesPage/services.json";
 import thoughts from "./peopleThoughts.json";
 import CountUp from "react-countup";
 
-import home1 from "../images/home/home1.jpg";
-import hPoject1 from "../images/home/hProject1.jpg";
-import hhProject2 from "../images/home/hProject2.jpg";
+import home1 from "../images/project/pembangunanRumah/20240911_140300.jpg";
+import hPoject1 from "../images/product/interior/20240129_130412.jpg";
+import hhProject2 from "../images/product/bangunRumah/rumah 2.jpg";
 import hhProject3 from "../images/home/hProject3.jpg";
 import hhProject4 from "../images/home/hProject4.jpg";
 import hArticle1 from "../images/home/hArticle1.jpg";
@@ -36,6 +36,92 @@ import { CarouselHome } from '../carousel/carouse';
 import { Carousel, Typography, Button, slider } from "@material-tailwind/react";
 
 export function Home() {
+  const aboutSectionRef = React.useRef(null);
+  const projectsSectionRef = React.useRef(null); // New ref for the projects section
+
+  const canSnapToAboutRef = React.useRef(true); // Flag to control if snapping is allowed
+  const canSnapToProjectsRef = React.useRef(false); // Flag for projects section, starts false
+  const isSnappingRef = React.useRef(false);   // Flag to prevent re-triggering during a snap
+
+  React.useEffect(() => {
+    // Initialize flags based on initial scroll position
+    const initialScrollY = window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const scrollThresholdForInitialAboutCheck = viewportHeight * 0.20; // A bit less for initial check
+
+    if (initialScrollY > scrollThresholdForInitialAboutCheck) {
+      canSnapToAboutRef.current = false;
+      // If loaded past 'About' trigger, check if we should be ready for 'Projects'
+      // This logic will be more robustly handled by the first call to handleScroll
+      // For now, keep canSnapToProjectsRef.current as false; handleScroll will adjust it.
+      canSnapToProjectsRef.current = false; 
+    } else {
+      canSnapToAboutRef.current = true;
+      canSnapToProjectsRef.current = false;
+    }
+
+    const handleScroll = () => {
+      if (isSnappingRef.current) {
+        return; // Do nothing if a snap animation is in progress
+      }
+
+      const currentScrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+
+      // --- Try to snap to About Us section ---
+      if (aboutSectionRef.current && canSnapToAboutRef.current) {
+        const scrollDownThresholdForAbout = viewportHeight * 0.25;
+        if (currentScrollY > scrollDownThresholdForAbout) {
+          isSnappingRef.current = true;
+          aboutSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+          canSnapToAboutRef.current = false;    // Disable this snap
+          canSnapToProjectsRef.current = true;  // Enable next snap to Projects
+          setTimeout(() => { isSnappingRef.current = false; }, 1000);
+          return; // Exit after initiating snap
+        }
+      }
+
+      // --- If past AboutUs, try to snap to Projects section ---
+      // This block also handles the case where the page loads scrolled past AboutUs.
+      // If canSnapToAboutRef is false (already snapped or loaded past)
+      // AND canSnapToProjectsRef is false (Projects snap hasn't been enabled by AboutUs snap yet, or it's been reset)
+      // THEN, we might need to enable canSnapToProjectsRef if we are in the right scroll zone.
+      if (aboutSectionRef.current && projectsSectionRef.current && !canSnapToAboutRef.current && !canSnapToProjectsRef.current) {
+        const aboutSectionTop = aboutSectionRef.current.offsetTop;
+        const projectsSnapTriggerPoint = aboutSectionTop + (viewportHeight * 0.25);
+        // If current scroll is past AboutUs top but not yet past where Projects would snap
+        if (currentScrollY > aboutSectionTop && currentScrollY < projectsSnapTriggerPoint) {
+            canSnapToProjectsRef.current = true; // Make eligible for projects snap
+        }
+      }
+      
+      if (projectsSectionRef.current && canSnapToProjectsRef.current && !canSnapToAboutRef.current) {
+        const aboutSectionTop = aboutSectionRef.current ? aboutSectionRef.current.offsetTop : currentScrollY;
+        // Threshold: scroll 25% of viewport height *past the top of the About Us section*
+        const scrollDownThresholdForProjects = aboutSectionTop + (viewportHeight * 0.25);
+        if (currentScrollY > scrollDownThresholdForProjects) {
+          isSnappingRef.current = true;
+          projectsSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+          canSnapToProjectsRef.current = false; // Disable this snap
+          setTimeout(() => { isSnappingRef.current = false; }, 1000);
+          return; // Exit after initiating snap
+        }
+      }
+
+      // --- Reset flags if user scrolls back to the very top ---
+      if (currentScrollY < viewportHeight * 0.1) { // Use a small percentage of viewport height
+        canSnapToAboutRef.current = true; // Allow snapping again
+        canSnapToProjectsRef.current = false; // Reset projects snap eligibility
+        // isSnappingRef.current = false; // Should be handled by timeouts
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // Refs are stable, so empty dependency array is fine.
+
   const handleChange = (e) => {
     const pClass = e.target.parentElement;
     console.log(e.target);
@@ -56,7 +142,7 @@ export function Home() {
       {/* flex-col by default (stacks vertically), md:flex-row (side-by-side on medium screens and up) */}
       {/* items-center (vertically centers in column), md:items-start (aligns to top in row) */}
       {/* gap-8 adds space between the two items, p-4 md:p-8 adds padding around this section */}
-      <div className="w-screen flex flex-col md:flex-row items-center md:items-start gap-8 p-4 md:p-8">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 p-4 md:p-8">
 
         {/* Home News Section */}
         {/* w-full (full width on small), md:w-1/2 (half width on medium), lg:w-1/3 (one-third on large) */}
@@ -81,7 +167,7 @@ export function Home() {
           </div>
         </div>
         
-        <div className="w-screen md:w-1/2 lg:w-2/3 max-w-screen-lg mx-auto">
+        <div className="md:w-1/2 lg:w-2/3 max-w-screen-lg mx-auto">
           <CarouselHome />
         </div>
       </div>
@@ -108,14 +194,17 @@ export function Home() {
               );
             })} */}
         </div>
-        <div className="homeAboutUs">
+        
+        <div className="homeAboutUs" ref={aboutSectionRef}>
+            <div className="hp-img">
+                  <img src={home1} alt="concept"></img>
+            </div>
             <div className="hp-subtext">
-              <h1>About PT. Holan Bagun Cipta</h1>
+              <h1>About PT. Holan Bangun Cipta</h1>
               <p>
               PT. Holan Bangun Cipta merupakan perusahaan yang bergerak di bidang konstruksi baik jasa konstruksi maupun pengadaan material yang meliputi pembangunan maupun renovasi : Gedung, Perumahan, Ruko, Real Estate, dll.
 Kami memiliki banyak pengalaman dalam Pembangunan Gedung, Rumah, dan Ruko baik bersama Developer ataupun Perorangan.
 Pengalaman kami mewujudkan impian banyak orang dalam proyek-proyek terdahulu bersama klien kami menjadi modal kami untuk terus membangun dan mengembangkan bisnis kami dengan mengedepankan kualitas dan dengan harga yang kompetitif.
-Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta bertekad berperan aktif di dalam melaksanakannya, dengan berlandaskan kepercayaan akan kemampuan diri secara profesional dan bertanggung jawab.
               </p>
               <div className="callUs">
           <div className="phoneNum">
@@ -140,9 +229,6 @@ Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta berte
           </Link>
         </div>
             </div>
-            <div className="hp-img">
-              <img src={home1} alt="concept"></img>
-            </div>
         </div>
         {/* <div className="callUs">
           <div className="phoneNum">
@@ -166,7 +252,7 @@ Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta berte
             </button>
           </Link>
         </div> */}
-        <div className="people-thoughts">
+        {/* <div className="people-thoughts">
           <h1>What People Think About Us</h1>
           <div className="people">
             {thoughts.people.map((req, ind) => {
@@ -187,8 +273,8 @@ Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta berte
               );
             })}
           </div>
-        </div>
-        <div className="home-brands">
+        </div> */}
+        {/* <div className="home-brands">
           <ul>
             <ol>
               <img src={brand1} alt="brand"></img>
@@ -206,9 +292,10 @@ Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta berte
               <img src={brand5} alt="brand"></img>
             </ol>
           </ul>
-        </div>
-        <div className="homeProjects">
-          <h1>Follow Our Projects</h1>
+        </div> */}
+
+        <div className="homeProjects" ref={projectsSectionRef}>
+          <h1>Follow Our Products</h1>
           <p>
             It is a long established fact that a reader will be distracted by
             the of readable content of a page lookings at its layouts.
@@ -220,8 +307,8 @@ Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta berte
               </div>
               <div className="hp-pro-detail">
                 <div className="hp-pro-info">
-                  <p className="hp-prj-title">Modern Kitchen</p>
-                  <p className="hp-prj-path">Decor / Architecture</p>
+                  <p className="hp-prj-title">Interior Desgin</p>
+                  <p className="hp-prj-path">"Customize your home’s interior design with us."</p>
                 </div>
                 <div className="hp-pro-btn">
                   <Link to={`/project-details`}>
@@ -239,8 +326,8 @@ Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta berte
               </div>
               <div className="hp-pro-detail">
                 <div className="hp-pro-info">
-                  <p className="hp-prj-title">Modern Kitchen</p>
-                  <p className="hp-prj-path">Decor / Architecture</p>
+                  <p className="hp-prj-title">Bangun Rumah</p>
+                  <p className="hp-prj-path">PEMBANGUNAN RUMAH 1 LANTAI S.D 3 LANTAI, DARI RUMAH SEDERHANA SAMPAI MODERN &  ELITE, BERBAGAI TIPE.</p>
                 </div>
                 <div className="hp-pro-btn">
                   <Link to={`/project-details`}>
@@ -252,49 +339,13 @@ Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta berte
               </div>
             </div>
 
-            <div className="hp-project">
-              <div className="hp-pro-img">
-                <img src={hhProject3} alt="project"></img>
-              </div>
-              <div className="hp-pro-detail">
-                <div className="hp-pro-info">
-                  <p className="hp-prj-title">Modern Kitchen</p>
-                  <p className="hp-prj-path">Decor / Architecture</p>
-                </div>
-                <div className="hp-pro-btn">
-                  <Link to={`/project-details`}>
-                    <button>
-                      <IoIosArrowForward />
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="hp-project">
-              <div className="hp-pro-img">
-                <img src={hhProject4} alt="project"></img>
-              </div>
-              <div className="hp-pro-detail">
-                <div className="hp-pro-info">
-                  <p className="hp-prj-title">Modern Kitchen</p>
-                  <p className="hp-prj-path">Decor / Architecture</p>
-                </div>
-                <div className="hp-pro-btn">
-                  <Link to={`/project-details`}>
-                    <button>
-                      <IoIosArrowForward />
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
       <div className="home-experience">
         <div className="h-years">
-        <CountUp className="h-year num" duration={4} end={12} />
+          <CountUp className="h-year num" duration={4} end={12} />
           <p>Years Of Experience</p>
         </div>
         <div className="h-s-project">
@@ -310,64 +361,8 @@ Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta berte
           <p>Happy Customers</p>
         </div>
       </div>
-      <div className="articleNews">
-        <h1>Articles & News</h1>
-        <p>
-          It is a long established fact that a reader will be distracted by the
-          of readable content of a page when lookings at its layouts
-        </p>
-        <div className="articles">
-          <div className="article nochosen" onClick={handleChange}>
-            <div className="article-header">
-              <img src={hArticle1} alt="article"></img>
-            </div>
-            <div className="article-content">
-              <p>Let’s Get Solution For Building Construction Work</p>
-              <div className="ac-detail">
-                <p className="ac-date">3 March 2023</p>
-                <Link to={`/blog-details`}>
-                  <button>
-                    <IoIosArrowForward />
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="article nochosen" onClick={handleChange}>
-            <div className="article-header">
-              <img src={hArticle2} alt="article"></img>
-            </div>
-            <div className="article-content">
-              <p>Let’s Get Solution For Building Construction Work</p>
-              <div className="ac-detail">
-                <p className="ac-date">3 March 2023</p>
-                <Link to={`/blog-details`}>
-                  <button>
-                    <IoIosArrowForward />
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="article nochosen" onClick={handleChange}>
-            <div className="article-header">
-              <img src={hArticle3} alt="article"></img>
-            </div>
-            <div className="article-content">
-              <p>Let’s Get Solution For Building Construction Work</p>
-              <div className="ac-detail">
-                <p className="ac-date">3 March 2023</p>
-                <Link to={`/blog-details`}>
-                  <button>
-                    <IoIosArrowForward />
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="h-interno">
+
+      {/* <div className="h-interno">
         <h1>Wanna join the interno?</h1>
         <p>It is a long established fact will be distracted.</p>
         <Link to={`/contact`}>
@@ -379,7 +374,7 @@ Selaras dengan Program Pembangunan oleh pemerintah, PT. Holan Bangun Cipta berte
             />
           </button>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }

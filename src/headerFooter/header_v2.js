@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation
-import logo from "../images/logo.png";
+import logo from "../images/logo/logo 3.png";
 import './header_v2.css'; // <-- We'll create this CSS file
 
 export function HeaderV2() {
@@ -25,8 +25,8 @@ export function HeaderV2() {
     <div className="header">
       <div className="header-logo-text">
         <Link style={{ display: 'flex', alignItems: 'center' }} to="/" onClick={closeMobileMenu}> {/* Added alignment & close */}
-          <div className="header-text">
-            <p>PT. Holan</p>
+          <div className="header-logo">
+            <img src={logo} alt="logo"></img>
           </div>
         </Link>
       </div>
@@ -55,7 +55,6 @@ export function HeaderV2() {
           {/* <li><Link to={`/team`} onClick={closeMobileMenu}>Team</Link></li> */}
           <li><Link to={`/services`} onClick={closeMobileMenu}>Services</Link></li>
           <li><Link to={`/projects`} onClick={closeMobileMenu}>Projects</Link></li>
-          <li><Link to={`/blog`} onClick={closeMobileMenu}>Blog</Link></li>
           <li><Link to={`/contact`} onClick={closeMobileMenu}>Contact</Link></li>
         </ul>
       </nav>

@@ -5,7 +5,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.png";
+import logo from "../images/logo/logo.png";
 import "./footer.css";
 
 export function Footer() {
@@ -19,7 +19,7 @@ export function Footer() {
                 <img src={logo} alt="logo"></img>
               </div>
               <div className="f-text">
-                <p>Interno</p>
+                <p>Holan Bangun Cipta</p>
               </div>
             </Link>
           </div>

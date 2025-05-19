@@ -12,6 +12,14 @@ import icon3 from "../images/Icon3.svg";
 import photo4 from "../images/services4.jpg";
 import icon4 from "../images/Icon4.svg";
 
+//picture
+import BangunRumahPic from "../images/product/bangunRumah/rumah 2.jpg"
+import JasaDesignArsitek from "../images/product/arsitektur/IMG-20250423-WA0016.jpg"
+import BangunInterior from "../images/product/interior/20240129_130412.jpg"
+import JasaAluminium from "../images/product/aluminium/20250422_111804.jpg"
+import Kanopi from "../images/product/kanopi/20250306_143028.jpg"
+import JasaRovasiRumah from "../images/product/renovasiRumah/20250422_111027.jpg"
+
 export function Services() {
   const handleChange = (e) => {
     const pClass = e.target.parentElement;
@@ -51,9 +59,119 @@ export function Services() {
         </h1>
       </div>
       <div className="service-types">
-        {services.services.map((type, index) => {
+          <div className="service-type" onClick={handleChange} key="1">
+              <div className="service-card-image-container">
+                <img 
+                  src={BangunRumahPic} // Use actual image URL or a placeholder
+                  alt="bagunRumah"
+                  className="service-card-image" 
+                />
+              </div>
+              <h2 onClick={handleChangeTwo}>Bagun Rumah</h2>
+              <p onClick={handleChangeTwo}>Rumah adalah bangunan impian setiap keluarga, mari bangun rumah impian anda.</p>
+              <Link to={`/bangun-rumah`}>
+                <button>
+                  Read More{" "}
+                  <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />
+                </button>
+              </Link>
+          </div>
+          <div className="service-type" onClick={handleChange} key="2">
+              <div className="service-card-image-container">
+                <img 
+                  src={JasaDesignArsitek} // Use actual image URL or a placeholder
+                  alt="DesingArsitektur"
+                  className="service-card-image" 
+                />
+              </div>
+              <h2 onClick={handleChangeTwo}>Jasa Design Arsitektur</h2>
+              <p onClick={handleChangeTwo}>Bersama Dengan para arsitek Holan Bangun Cipta, kami siap mendesign rumah anda.</p>
+              <Link to={`/servicesingle`}>
+                <button>
+                  Read More{" "}
+                  <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />
+                </button>
+              </Link>
+          </div>
+          <div className="service-type" onClick={handleChange} key="3">
+              <div className="service-card-image-container">
+                <img 
+                  src={BangunInterior} // Use actual image URL or a placeholder
+                  alt="interiorWorks"
+                  className="service-card-image" 
+                />
+              </div>
+              <h2 onClick={handleChangeTwo}>Pekerjaan Interior</h2>
+              <p onClick={handleChangeTwo}>Your home should tell the story of who you are, and be a collection of what you love. Kami siap membangun Interior Rumah anda.</p>
+              <Link to={`/servicesingle`}>
+                <button>
+                  Read More{" "}
+                  <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />
+                </button>
+              </Link>
+          </div>
+          <div className="service-type" onClick={handleChange} key="4">
+              <div className="service-card-image-container">
+                <img 
+                  src={JasaAluminium} // Use actual image URL or a placeholder
+                  alt="JasaAluminium"
+                  className="service-card-image" 
+                />
+              </div>
+              <h2 onClick={handleChangeTwo}>Pembuatan Aluminium, Jendela dan Pintu</h2>
+              <p onClick={handleChangeTwo}>Kami mampu dan siap membuat bentuk Aluminium, Jendela dan Pintu anda.</p>
+              <Link to={`/servicesingle`}>
+                <button>
+                  Read More{" "}
+                  <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />
+                </button>
+              </Link>
+          </div>
+          <div className="service-type" onClick={handleChange} key="5">
+              <div className="service-card-image-container">
+                <img 
+                  src={Kanopi} // Use actual image URL or a placeholder
+                  alt="Kanopi"
+                  className="service-card-image" 
+                />
+              </div>
+              <h2 onClick={handleChangeTwo}>Pembuatan Kanopi, Railing dan Kisi Kisi</h2>
+                <p onClick={handleChangeTwo}>Taking in the skyline from a whole new angle. Kami siap membangun Kanopi, Railing dan Kisi Kisi rumah anda.</p>
+              <Link to={`/servicesingle`}>
+                <button>
+                  Read More{" "}
+                  <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />
+                </button>
+              </Link>
+          </div>
+          <div className="service-type" onClick={handleChange} key="5">
+              <div className="service-card-image-container">
+                <img 
+                  src={JasaRovasiRumah} // Use actual image URL or a placeholder
+                  alt="Kanopi"
+                  className="service-card-image" 
+                />
+              </div>
+              <h2 onClick={handleChangeTwo}>Ronovasi Rumah</h2>
+                <p onClick={handleChangeTwo}>Kami sigap dan handal untuk merenovasi rumah anda.</p>
+              <Link to={`/servicesingle`}>
+                <button>
+                  Read More{" "}
+                  <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />
+                </button>
+              </Link>
+          </div>
+
+        {/* {services.services.map((type, index) => {
           return (
             <div className="service-type" onClick={handleChange} key={index}>
+              <div className="service-card-image-container">
+                <img 
+                  src={type.service_image_url} // Use actual image URL or a placeholder
+                  alt={type.service_name} 
+                  className="service-card-image" 
+                />
+              </div>
               <h2 onClick={handleChangeTwo}>{type.service_name}</h2>
               <p onClick={handleChangeTwo}>{type.service_content}</p>
               <Link to={`/servicesingle`}>
@@ -64,7 +182,7 @@ export function Services() {
               </Link>
             </div>
           );
-        })}
+        })} */}
       </div>
       <div className="howWeWork">
         <div className="how-title">
@@ -139,11 +257,6 @@ export function Services() {
         </div>
       </div>
 
-      <div className="interno">
-        <h1>Wanna join the interno?</h1>
-        <p>It is a long established fact  will be distracted.</p>
-        <Link><button>Contact With Us<AiOutlineArrowRight style={{ marginLeft: "5px"  }} color="#292F36" /></button></Link>
-      </div>
     </div>
   );
 }

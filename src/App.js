@@ -7,6 +7,7 @@ import { RestrictedPage } from './restrictedPage/restricted';
 import { PricingPlan } from './pricingPlan/pricingPlan';
 import { Faq } from './faq/faq';
 import { ProjectDetails } from './projectDetails/projectDetails';
+import  {BangunRumah} from './bangunRumah/projectDetails'
 import { Team } from './team/team';
 import { TeamSingle } from './teamSingle/teamSingle';
 import { About } from './about/about';
@@ -22,6 +23,7 @@ import { Cookies } from './Allterms/cookies';
 import { Privacy } from './Allterms/privacy';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { SmoothScroll } from './smooth';
+import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton'; // Import the WhatsApp button
 
 function App() {
 
@@ -35,6 +37,7 @@ function App() {
         <Route path='/pricing' element={<PricingPlan/>}></Route>
         <Route path='/faq' element={<Faq/>}></Route>
         <Route path='/project-details' element={<ProjectDetails/>}></Route>
+        <Route path='/bangun-rumah' element={<BangunRumah/>}></Route>
         {/* <Route path='/team' element={<Team/>}></Route> */}
         <Route path='/team-single' element={<TeamSingle/>}></Route>
         <Route path='/aboutus' element={<About/>}></Route>
@@ -50,6 +53,7 @@ function App() {
         <Route path='/privacy-policy' element={<Privacy />}></Route>
       </Routes>
       <Footer />
+      <WhatsAppButton /> {/* Add the WhatsApp button here */}
     </BrowserRouter>
   );
 }

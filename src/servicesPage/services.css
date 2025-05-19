@@ -5,7 +5,7 @@
 .services-header {
   width: 100%;
   min-height: 43vh;
-  background-image: url("../images/backgroung/servicesBg.jpg");
+  background-image: url("../images/project/pembangunanRumah/20240911_140300.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -36,6 +36,96 @@
     display: flex;
     flex-wrap: wrap;
     margin: 5% auto;
+}
+
+
+/* Styles for the container of service cards */
+.service-types {
+    display: flex; /* Enable flexbox */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-around; /* Distribute space around items */
+    gap: 20px; /* Space between cards */
+    padding: 20px; /* Padding around the container */
+    max-width: 1200px; /* Optional: constrain the max width */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Styles for each service card */
+.service-type {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    /* Flex properties for individual cards */
+    flex: 1 1 300px; /* Grow, shrink, with a base width of 300px */
+    min-width: 280px; /* Minimum width before wrapping */
+    display: flex;
+    flex-direction: column; /* Stack content vertically within the card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.service-card-image-container {
+    width: 100%; /* Make container take full width of card */
+    height: 200px; /* Set a fixed height for the image area, adjust as needed */
+    overflow: hidden; /* Hide parts of image that overflow if aspect ratio differs */
+    margin-bottom: 15px; /* Space between image and title */
+    border-radius: 8px 8px 0 0; /* Round top corners to match card if image is at the very top */
+}
+
+.service-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area, cropping if necessary to maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+}
+
+.service-type:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+.service-type h2 {
+    font-size: 1.5em; /* Adjust as needed */
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.service-type p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allow paragraph to take available space, pushing button down */
+}
+
+.service-type button {
+    background-color: #CDA274; /* Your theme color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Align button to the start of the card's cross axis */
+}
+
+.service-type button:hover {
+    background-color: #b89067; /* Darker shade for hover */
+}
+
+/* Responsive adjustments for smaller screens (phones) */
+@media (max-width: 768px) {
+    .service-type {
+        flex-basis: 100%; /* Make cards take full width on smaller screens */
+        margin-bottom: 20px; /* Add some space between stacked cards */
+    }
+
+    .service-types {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
 }
 
 .service-type {

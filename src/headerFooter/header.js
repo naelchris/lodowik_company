@@ -21,7 +21,6 @@ export function Header() {
             <li><Link to={`team`}>Team</Link></li>
             <li><Link to={`/services`}>Services</Link></li>
             <li><Link to={`/projects`}>Projects</Link></li>
-            <li><Link to={`/blog`}>Blog</Link></li>
             <li><Link to={`/contact`}>Contact</Link></li>
         </ul>
       </div>

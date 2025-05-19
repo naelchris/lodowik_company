@@ -18,7 +18,7 @@ export function Contact() {
         </h1>
       </div>
       <div className="contact-content">
-        <h2>We love meeting new people and helping them.</h2>
+        <h2>Kirimkan Kami Pesan        </h2>
         <div className="contact-form">
           <div className="contact-form-info">
             <div className="icons">
@@ -26,13 +26,13 @@ export function Contact() {
                 <span className="icon">
                   <HiOutlineMail />
                 </span>
-                <a href="mailto: info@yourdomain.com">info@yourdomain.com</a>
+                <a href="mailto: info@yourdomain.com">Email HolanBangunCipta</a>
               </p>
               <p>
                 <span className="icon">
                   <BsTelephone />
                 </span>
-                +1 (378) 400-1234
+                <a href="https://wa.me/08118743635">WA +62 8118983634</a>
               </p>
               <p>
                 <span className="icon">
@@ -41,30 +41,7 @@ export function Contact() {
                 <a href="www.yourdomain.com">www.yourdomain.com</a>
               </p>
             </div>
-            <div className="contact-smedias">
-              <ul>
-                <li>
-                  <a href="https://www.facebook.com/">
-                    <FaFacebookF />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/">
-                    <FaInstagram />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.twitter.com/">
-                    <FaTwitter />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/">
-                    <FaLinkedin />
-                  </a>
-                </li>
-              </ul>
-            </div>
+            
           </div>
           <div className="contact-form-fill">
             <div className="nameEmail">
@@ -89,7 +66,7 @@ export function Contact() {
       </div>
       <div className="map">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97236.62360572393!2d49.78474799369314!3d40.394571267599446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6bd6211cf9%3A0x343f6b5e7ae56c6b!2sBaku!5e0!3m2!1sen!2saz!4v1677357758009!5m2!1sen!2saz"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8816.592862389463!2d84.9503004!3d56.4652076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x432694a9e00718cd%3A0xc86903a0f950f17e!2sMuzey%20Istorii%20Tpu!5e0!3m2!1sid!2sid!4v1747637981157!5m2!1sid!2sid"
           title="map"
           style={{
             frameborder: "0",
