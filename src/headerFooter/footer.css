@@ -140,13 +140,44 @@
 }
 
 @media screen and (max-width: 768px) {
+    .f-info {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center items when stacked */
+        text-align: center; /* Center text within each column */
+    }
+
     .f-social-medias {
-        width: 28%;
-        padding-right: 5%;
+        width: 80%; /* Allow social media section to take more width */
+        padding-right: 0; /* Remove right padding */
+        margin-bottom: 30px; /* Add space below */
+        align-items: center; /* Center logo and text if they are flex items */
+    }
+
+    .f-logo-text {
+        justify-content: center; /* Center the logo and text within f-social-medias */
+    }
+
+    .f-pages, .f-services, .f-contact {
+        width: 80%; /* Allow other sections to take more width */
+        margin-bottom: 30px; /* Add space below each section */
+        text-align: center; /* Ensure text is centered */
     }
 
     /* TERMS */
     .terms {
         width: 100%;
+    }
+
+    .terms > ul {
+        flex-direction: column; /* Stack terms if needed, or adjust spacing */
+        align-items: center;
+    }
+
+    .terms > ul > ol {
+        margin-bottom: 10px; /* Space between stacked terms */
+    }
+
+    .f-smedia > ul {
+        justify-content: center; /* Center social media icons */
     }
 }

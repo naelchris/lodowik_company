@@ -2,13 +2,33 @@ import React, { useState } from 'react';
 import "./projectDetails.css";
 import Table from "react-bootstrap/Table";
 import photo from "../images/project/pembangunanRumah/20240911_140109.jpg";
-import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css'
-import InnerImageZoom from 'react-inner-image-zoom'
+import photo2 from "../images/project/pembangunanRumah/20240313_142839.jpg";
+import photo3 from "../images/project/pembangunanRumah/20240911_140109.jpg";
+import photo4 from "../images/project/pembangunanRumah/20240911_140300.jpg";
+
+// import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css' // We'll replace this
+// import InnerImageZoom from 'react-inner-image-zoom' // With yet-another-react-lightbox
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'; // Import icons
 
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import "yet-another-react-lightbox/plugins/captions.css";
+
+// For demonstration, let's assume you have more images.
+// In a real app, these would come from props or a data source.
+const galleryImages = [
+  { src: photo, title: "Pembangunan Rumah - Tampilan Depan", description: "Proses pembangunan rumah tahap awal." },
+  { src: photo2, title: "Pembangunan Rumah - Tampilan Awal", description: "Detail konstruksi dari sisi berbeda." }, // Replace with actual different images
+  { src: photo4, title: "Pembangunan Rumah - Tampilan Awal", description: "Detail konstruksi dari sisi berbeda." }, // Replace with actual different images
+
+];
 
 export function BangunRumah() {
   const [isDetailsOpen, setIsDetailsOpen] = useState(true); // Start open by default
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   return (
     <div className="projectDetails">
@@ -53,12 +73,32 @@ export function BangunRumah() {
           )}
         </div>
       </div>
-      <div className="zoomRoom">
-        <InnerImageZoom src={photo} />
-        <InnerImageZoom src={photo} />
-        <InnerImageZoom src={photo} />
-        <InnerImageZoom src={photo} />
+      <div className="gallery-section">
+        <div className="image-gallery-grid">
+          {galleryImages.map((image, index) => (
+            <div 
+              key={index} 
+              className="gallery-thumbnail" 
+              onClick={() => {
+                setCurrentImageIndex(index);
+                setLightboxOpen(true);
+              }}
+            >
+              <img src={image.src} alt={image.title || `Gallery image ${index + 1}`} />
+            </div>
+          ))}
+        </div>
       </div>
+
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        slides={galleryImages.map(img => ({ src: img.src, title: img.title, description: img.description }))}
+        index={currentImageIndex}
+        plugins={[Zoom, Captions]}
+        captions={{ showToggle: true, descriptionTextAlign: 'center' }}
+        zoom={{ maxZoomPixelRatio: 3, zoomInMultiplier: 1.5, doubleTapDelay: 300, doubleClickDelay: 300 }}
+      />
     </div>
   );
 }

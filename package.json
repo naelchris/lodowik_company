@@ -19,7 +19,8 @@
     "react-player": "^2.11.2",
     "react-router-dom": "^6.8.1",
     "react-scripts": "^5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yet-another-react-lightbox": "^3.23.2"
   },
   "scripts": {
     "start": "react-scripts start",

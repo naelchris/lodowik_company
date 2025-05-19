@@ -63,11 +63,11 @@ export function Services() {
               <div className="service-card-image-container">
                 <img 
                   src={BangunRumahPic} // Use actual image URL or a placeholder
-                  alt="bagunRumah"
+                  alt="bangunRumah"
                   className="service-card-image" 
                 />
               </div>
-              <h2 onClick={handleChangeTwo}>Bagun Rumah</h2>
+              <h2 onClick={handleChangeTwo}>Bangun Rumah</h2>
               <p onClick={handleChangeTwo}>Rumah adalah bangunan impian setiap keluarga, mari bangun rumah impian anda.</p>
               <Link to={`/bangun-rumah`}>
                 <button>
