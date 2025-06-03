@@ -86,7 +86,7 @@ export function Services() {
               </div>
               <h2 onClick={handleChangeTwo}>Jasa Design Arsitektur</h2>
               <p onClick={handleChangeTwo}>Bersama Dengan para arsitek Holan Bangun Cipta, kami siap mendesign rumah anda.</p>
-              <Link to={`/servicesingle`}>
+              <Link to={`/jasa-arsitek`}>
                 <button>
                   Read More{" "}
                   <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />
@@ -103,7 +103,7 @@ export function Services() {
               </div>
               <h2 onClick={handleChangeTwo}>Pekerjaan Interior</h2>
               <p onClick={handleChangeTwo}>Your home should tell the story of who you are, and be a collection of what you love. Kami siap membangun Interior Rumah anda.</p>
-              <Link to={`/servicesingle`}>
+              <Link to={`/jasa-interior`}>
                 <button>
                   Read More{" "}
                   <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />
@@ -120,7 +120,7 @@ export function Services() {
               </div>
               <h2 onClick={handleChangeTwo}>Pembuatan Aluminium, Jendela dan Pintu</h2>
               <p onClick={handleChangeTwo}>Kami mampu dan siap membuat bentuk Aluminium, Jendela dan Pintu anda.</p>
-              <Link to={`/servicesingle`}>
+              <Link to={`/jasa-aluminium`}>
                 <button>
                   Read More{" "}
                   <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />
@@ -137,7 +137,7 @@ export function Services() {
               </div>
               <h2 onClick={handleChangeTwo}>Pembuatan Kanopi, Railing dan Kisi Kisi</h2>
                 <p onClick={handleChangeTwo}>Taking in the skyline from a whole new angle. Kami siap membangun Kanopi, Railing dan Kisi Kisi rumah anda.</p>
-              <Link to={`/servicesingle`}>
+              <Link to={`/jasa-kanopi`}>
                 <button>
                   Read More{" "}
                   <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />
@@ -154,7 +154,7 @@ export function Services() {
               </div>
               <h2 onClick={handleChangeTwo}>Ronovasi Rumah</h2>
                 <p onClick={handleChangeTwo}>Kami sigap dan handal untuk merenovasi rumah anda.</p>
-              <Link to={`/servicesingle`}>
+              <Link to={`/jasa-renovasi`}>
                 <button>
                   Read More{" "}
                   <BsArrowRight style={{ marginLeft: "5px" }} color="#CDA274" />

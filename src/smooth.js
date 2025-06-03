@@ -10,6 +10,6 @@ export function SmoothScroll({ children }) {
         behavior: "smooth",
       });
     }
-  }, [location]);
+  }, [location, navType]);
   return <>{children}</>;
 }

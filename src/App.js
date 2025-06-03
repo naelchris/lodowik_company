@@ -38,6 +38,11 @@ function App() {
         <Route path='/faq' element={<Faq/>}></Route>
         <Route path='/project-details' element={<ProjectDetails/>}></Route>
         <Route path='/bangun-rumah' element={<BangunRumah/>}></Route>
+        <Route path='/jasa-arsitek' element={<BangunRumah/>}></Route>
+        <Route path='/jasa-interior' element={<BangunRumah/>}></Route>
+        <Route path='/jasa-aluminium' element={<BangunRumah/>}></Route>
+        <Route path='/jasa-kanopi' element={<BangunRumah/>}></Route>
+        <Route path='/jasa-renovasi' element={<BangunRumah/>}></Route>
         {/* <Route path='/team' element={<Team/>}></Route> */}
         <Route path='/team-single' element={<TeamSingle/>}></Route>
         <Route path='/aboutus' element={<About/>}></Route>
