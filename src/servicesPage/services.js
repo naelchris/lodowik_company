@@ -1,7 +1,6 @@
 import "./services.css";
 import services from "./services.json";
 import { BsArrowRight } from "react-icons/bs";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import photo1 from "../images/services1.jpg";
 import icon1 from "../images/Icon1.svg";
